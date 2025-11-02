@@ -1,0 +1,5 @@
+tmp.txt*
+*.tmp*
+domain-list-community/
+*-domain.txt*
+*-regex.txt*
