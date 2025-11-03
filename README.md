@@ -1,30 +1,23 @@
 # geosite2clash
 
-Convert [v2fly/domain-list-community](https://github.com/v2fly/domain-list-community) **geosite lists** into [Clash](https://github.com/Dreamacro/clash)/[Meta](https://github.com/MetaCubeX/mihomo) compatible rule files.
+Convert [v2fly/domain-list-community](https://github.com/v2fly/domain-list-community) geosite lists into Clash-compatible rule files.
 
 ---
 
 ## 🧭 Overview
 
-`geosite2clash` flattens any **geosite** list (resolving all nested `include:` entries) and generates two clean, deduplicated rule files:
+`geosite2clash` flattens any geosite list (resolving all nested `include:` entries) and generates two output files:
 
-| Output file | Format | Purpose |
-|--------------|---------|----------|
-| `<prefix>-domain.txt` | domain wildcards (`+.` `*` `?`) | for `behavior: domain` rule-providers |
-| `<prefix>-regex.txt`  | `DOMAIN-REGEX,<pattern>` | for `behavior: classical` rule-providers |
+| Output file         | Format                                | Description                          |
+|---------------------|----------------------------------------|--------------------------------------|
+| `<prefix>-domain.txt` | wildcard domain rules (`+.` `*` `?`)    | For `behavior: domain` rule-sets     |
+| `<prefix>-regex.txt`  | `DOMAIN-REGEX,<pattern>`              | For `behavior: classical` rule-sets  |
 
-This makes it easy to integrate v2fly’s curated domain lists into Clash, or other rule-based proxy managers — without depending on third-party mirrors.
+The output is clean, deduplicated, and ready to use in any Clash-compatible client.
 
 ---
 
 ## ⚙️ Usage
 
 ```bash
-# Basic usage
-./build.sh <geosite> [output-prefix]
-
-# Example: build the "geolocation-cn" list
-./build.sh geolocation-cn
-
-# Example: build with a custom output prefix
-./build.sh geolocation-cn cn
+./build.sh <geosite> [output_prefix] [-o output_prefix] [-r repo_path]
